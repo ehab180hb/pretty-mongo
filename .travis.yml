@@ -1,0 +1,16 @@
+language: node_js
+
+services:
+  - mongodb
+
+node_js:
+  - 'node'
+
+before_install:
+  - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >  ~/.npmrc %
+
+script:
+  - yarn bt
+
+after_success:
+  - npm publish

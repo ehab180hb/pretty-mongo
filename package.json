@@ -1,0 +1,50 @@
+{
+  "name": "pretty-mongo",
+  "version": "0.0.1",
+  "description": "A set of helper tools to test mongo-based projects",
+  "author": "Ehab Khaireldin",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ehab180hb/pretty-mongo.git"
+  },
+  "keywords": [
+    "MongoDB",
+    "Mongo"
+  ],
+  "bugs": {
+    "url": "https://github.com/ehab180hb/pretty-mongo/issues"
+  },
+  "homepage": "https://github.com/ehab180hb/pretty-mongo#readme",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "bt": "yarn build && yarn test",
+    "lint": "eslint './src/**/*.ts' --quiet --fix"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.25",
+    "@types/mongodb": "^3.5.9",
+    "@types/mongodb-uri": "^0.9.0",
+    "@types/randomstring": "^1.1.6",
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "jest": "^25.3.0",
+    "jest-junit": "^9.0.0",
+    "mongo-test-suit": "^0.0.1",
+    "prettier": "^2.0.2",
+    "randomstring": "^1.1.5",
+    "timemachine": "^0.3.1",
+    "ts-jest": "^25.3.1",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "mongodb": "^3.3.4",
+    "mongodb-uri": "^0.9.7",
+    "tslib": "^1.10.0"
+  }
+}

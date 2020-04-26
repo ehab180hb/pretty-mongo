@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    // Target/module
+    "target": "es2018",
+    "lib": ["dom", "es2018"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+
+    // Emit
+    "sourceMap": false,
+    "declaration": true,
+
+    // Strictness
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "skipLibCheck": true,
+
+    "pretty": true,
+    "newLine": "lf",
+    "importHelpers": true,
+    "experimentalDecorators": true,
+    "outDir": "./dist",
+    "typeRoots": ["./node_modules/@types"]
+  },
+  "include": ["src/*.ts"],
+  "exclude": ["node_modules", "src/**/*.test.ts"]
+}

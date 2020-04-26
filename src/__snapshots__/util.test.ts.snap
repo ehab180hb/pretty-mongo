@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Generates proper ranges 1`] = `
+Array [
+  1,
+  2,
+  3,
+  4,
+  5,
+]
+`;
+
+exports[`Generates proper ranges 2`] = `
+Array [
+  0,
+]
+`;
+
+exports[`Generates proper ranges 3`] = `"Value of 'from' should be lower than or equal to 'to'"`;
+
+exports[`Generates proper ranges 4`] = `"Value of 'from' should be lower than or equal to 'to'"`;
+
+exports[`removeValues() Remove values that meet the given condition 1`] = `
+Object {
+  "y": Object {
+    "a": "a",
+  },
+}
+`;

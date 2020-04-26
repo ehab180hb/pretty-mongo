@@ -1,0 +1,209 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DB methods tests Deleting data DeleteOne When record does not exist 1`] = `
+Array [
+  Object {
+    "_id": "5cc1db02dc067f5df93c5432",
+    "hi": "hello",
+    "name": "Mark",
+    "same": "same",
+  },
+  Object {
+    "_id": "5cc1db02dc067f5df93c5433",
+    "name": "John",
+    "same": "same",
+    "tak": "nie",
+  },
+]
+`;
+
+exports[`DB methods tests Deleting data DeleteOne When record exists 1`] = `
+Array [
+  Object {
+    "_id": "5cc1db02dc067f5df93c5433",
+    "name": "John",
+    "same": "same",
+    "tak": "nie",
+  },
+]
+`;
+
+exports[`DB methods tests Fetching data() getMany() When fetching all 1`] = `
+Array [
+  Object {
+    "_id": "5cc1db02dc067f5df93c5432",
+    "hi": "hello",
+    "name": "Mark",
+    "same": "same",
+  },
+  Object {
+    "_id": "5cc1db02dc067f5df93c5433",
+    "name": "John",
+    "same": "same",
+    "tak": "nie",
+  },
+]
+`;
+
+exports[`DB methods tests Fetching data() getMany() with projection 1`] = `
+Array [
+  Object {
+    "_id": "5cc1db02dc067f5df93c5432",
+    "hi": "hello",
+    "name": "Mark",
+  },
+]
+`;
+
+exports[`DB methods tests Fetching data() getMany() with skipping 1`] = `
+Array [
+  Object {
+    "_id": "5cc1db02dc067f5df93c5433",
+    "name": "John",
+    "same": "same",
+    "tak": "nie",
+  },
+]
+`;
+
+exports[`DB methods tests Fetching data() getMany() with sorting 1`] = `
+Array [
+  Object {
+    "_id": "5cc1db02dc067f5df93c5433",
+    "name": "John",
+    "same": "same",
+    "tak": "nie",
+  },
+  Object {
+    "_id": "5cc1db02dc067f5df93c5432",
+    "hi": "hello",
+    "name": "Mark",
+    "same": "same",
+  },
+]
+`;
+
+exports[`DB methods tests Fetching data() getOne When it exists - with opts 1`] = `
+Object {
+  "_id": "5cc1db02dc067f5df93c5432",
+  "hi": "hello",
+  "name": "Mark",
+}
+`;
+
+exports[`DB methods tests Fetching data() getOne When it exists 1`] = `
+Object {
+  "_id": "5cc1db02dc067f5df93c5432",
+  "hi": "hello",
+  "name": "Mark",
+  "same": "same",
+}
+`;
+
+exports[`DB methods tests Fetching data() getOneById() When a record exists 1`] = `
+Object {
+  "_id": "5cc1db02dc067f5df93c5432",
+  "hi": "hello",
+  "name": "Mark",
+  "same": "same",
+}
+`;
+
+exports[`DB methods tests Fetching data() getOneById() When a record exists with projection 1`] = `
+Object {
+  "_id": "5cc1db02dc067f5df93c5432",
+  "name": "Mark",
+}
+`;
+
+exports[`DB methods tests Storing data createMany() When given the _id 1`] = `
+Array [
+  Object {
+    "_id": 2018-01-25T17:30:44.000Z,
+    "k": "f",
+  },
+  Object {
+    "_id": 2018-01-25T17:30:44.000Z,
+    "k": "f",
+  },
+  Object {
+    "_id": 2018-01-25T17:30:44.000Z,
+    "k": "f",
+  },
+  Object {
+    "_id": 2018-01-25T17:30:44.000Z,
+    "k": "f",
+  },
+  Object {
+    "_id": 2018-01-25T17:30:44.000Z,
+    "k": "f",
+  },
+]
+`;
+
+exports[`DB methods tests Storing data createMany() When not given the _id 1`] = `
+Array [
+  Object {
+    "_id": 2018-01-25T17:30:44.000Z,
+    "v": "n",
+  },
+  Object {
+    "_id": 2018-01-25T17:30:44.000Z,
+    "v": "n",
+  },
+  Object {
+    "_id": 2018-01-25T17:30:44.000Z,
+    "v": "n",
+  },
+  Object {
+    "_id": 2018-01-25T17:30:44.000Z,
+    "v": "n",
+  },
+  Object {
+    "_id": 2018-01-25T17:30:44.000Z,
+    "v": "n",
+  },
+]
+`;
+
+exports[`DB methods tests Storing data createOne() Creates record properly 1`] = `
+Array [
+  Object {
+    "hi": "hello",
+  },
+]
+`;
+
+exports[`DB methods tests Storing data updateFieldsWithSpecialOp() Without options 1`] = `
+Array [
+  Object {
+    "num": 2,
+    "x": "y",
+  },
+]
+`;
+
+exports[`DB methods tests Storing data updateOne() When an object in the update is undefined 1`] = `
+Array [
+  Object {
+    "email": "IExist2@gmail.com",
+    "wontBeDeleted": "x",
+  },
+  Object {
+    "email": "meToo@gmail.com",
+  },
+]
+`;
+
+exports[`DB methods tests Storing data updateOne() When record does not exist 1`] = `Array []`;
+
+exports[`DB methods tests Storing data updateOne() When record exists 1`] = `
+Array [
+  Object {
+    "email": "IExist2@gmail.com",
+  },
+  Object {
+    "email": "meToo@gmail.com",
+  },
+]
+`;
