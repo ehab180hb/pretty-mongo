@@ -6,7 +6,7 @@ Pretty Mongo offers a set of handy methods that abstract away many of the comple
 
 The Native MongoDB driver is awesome! But in the era of serverless and microservices, we find ourselves having to constantly write boilerplate code to get up and running.
 
-This library allows you to easily establish one or more database connections, and will also provide an abstraction layer that works really well Typescript and gives you a set of nicely-named methods that'll cover the use cases of the majority of projects out there.
+This library allows you to easily establish one or more database connections, and will also provide an abstraction layer that works really well with Typescript and gives you a set of nicely-named methods that'll cover the use cases of the majority of projects out there.
 
 # Installation
 
@@ -81,6 +81,28 @@ const run = async () => {
 }
 
 run()
+```
+
+### Using multiple database connections
+
+```typescript
+const dbConnections = [
+  {
+    uri: 'mongodb://localhost/myOlapDB',
+    dbName: 'OLAP_DB',
+  },
+  {
+    uri: 'mongodb://localhost/myOltpDB',
+    dbName: 'OLTP_DB',
+  },
+]
+await Promise.all(dbConnections.map(initializeMongoDB))
+
+// Now in your modules get a db by its name
+const myOlapDb = getDb({ dbName: 'OLAP_DB' })
+
+// Will throw if you tried to get a db that you did not initialize
+const myNonExistingDb = getDb({ dbName: 'SANTA' }) // throws: Database SANTA not yet initialized!
 ```
 
 Full API documentation [here](https://github.com/ehab180hb/pretty-mongo/blob/master/API.md)
