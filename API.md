@@ -43,7 +43,7 @@ A class that gives you a set of useful methods to abstract away some of the comp
 - `collection` - The MongoDB `Collection` object. The one you get by calling `getClient({ dbName }).collection('MyCollectionName')`
 
 ```typescript
-interface userDbModel {
+interface UserDbModel {
   _id: ObjectId
   firstName: string
   lastName: string
@@ -55,7 +55,7 @@ interface userDbModel {
 const dbName = 'myApp'
 const collection = getClient({ dbName }).collection('Users')
 
-const usersCollectionMethods = new MongoCollectionMethods<userDbModel>(collection)
+const usersCollectionMethods = new MongoCollectionMethods<UserDbModel>(collection)
 
 const totalUserCount = await usersCollectionMethods.getTotalCount()
 ```

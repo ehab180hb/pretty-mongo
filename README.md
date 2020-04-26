@@ -38,7 +38,7 @@ const run = async () => {
    * app much easier. And it works really well with Typescript! By defining
    * your Model here, you'll be getting typed objects when for example scanning the DB.
    */
-  interface userDbModel {
+  interface UserDbModel {
     _id: ObjectId
     firstName: string
     lastName: string
@@ -46,7 +46,7 @@ const run = async () => {
     balance: number
     isAdmin?: boolean
   }
-  const usersCollectionMethods = new MongoCollectionMethods<userDbModel>(userCollection)
+  const usersCollectionMethods = new MongoCollectionMethods<UserDbModel>(userCollection)
 
   // When creating a new object, it will give you an autocomplete feature in your IDE.
   const created = await usersCollectionMethods.createOne({
