@@ -20,7 +20,11 @@ This library allows you to easily establish one or more database connections, an
 import { initializeMongoDB, getDb, MongoCollectionMethods } from 'pretty-mongo'
 const run = async () => {
   const uri = `mongodb://localhost/myApp`
-  const dbName = 'myMainDbConnection' // We set the name here, allowing us to later create different connections and give then different labels to fetch them.
+  /*
+   * We set the name here, allowing us to later create different connections
+   * and give them different labels to fetch them.
+   */
+  const dbName = 'myMainDbConnection'
   await initializeMongoDB({ uri, dbName })
 
   // Now we could easily access that connection from a different module synchronously.
@@ -29,8 +33,11 @@ const run = async () => {
   // This will return the native MongoDB `Collection` object.
   const userCollection = myMainDb.collection('Users')
 
-  // The library also offers a set of methods that will make building your app much easier. And it works really well with Typescript! By defining your Model here, you'll be getting typed objects when for example scanning the DB.
-
+  /*
+   * The library also offers a set of methods that will make building your
+   * app much easier. And it works really well with Typescript! By defining
+   * your Model here, you'll be getting typed objects when for example scanning the DB.
+   */
   interface userDbModel {
     _id: ObjectId
     firstName: string
@@ -50,7 +57,10 @@ const run = async () => {
     createdAt: new Date(),
   })
 
-  // And typescript will nag you if you tried to pass a field that does not exist or provided the wrong type for a field
+  /*
+   * And typescript will nag you if you tried to pass a field
+   * that does not exist or provided the wrong type for a field
+   */
   const created = await usersCollectionMethods.createOne({
     _id: new ObjectId(), // it will be created automatically if you do not include it
     lastName: 'Smith',

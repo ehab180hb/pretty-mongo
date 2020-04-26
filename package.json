@@ -1,6 +1,6 @@
 {
   "name": "pretty-mongo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A set of helper tools to test mongo-based projects",
   "author": "Ehab Khaireldin",
   "license": "MIT",
