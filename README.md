@@ -12,7 +12,7 @@ This library allows you to easily establish one or more database connections, an
 
 [![NPM Info](https://nodei.co/npm/pretty-mongo.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.org/package/pretty-mongo)
 
-[![Build Status](https://travis-ci.org/ehab180hb/pretty-mongo.svg?branch=master)](https://travis-ci.org/ehab180hb/pretty-mongo)
+[![Build Status](https://travis-ci.com/ehab180hb/pretty-mongo.svg?branch=master)](https://travis-ci.org/ehab180hb/pretty-mongo)
 
 ## Example usage
 
