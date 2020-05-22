@@ -15,6 +15,7 @@ type UpdateOperators =
   | '$addToSet'
   | '$pop'
   | '$push'
+  | '$pull'
 
 /**
  * instantiate the class with a given MongoDB collection
