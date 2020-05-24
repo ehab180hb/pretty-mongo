@@ -24,11 +24,11 @@ const run = async () => {
    * We set the name here, allowing us to later create different connections
    * and give them different labels to fetch them.
    */
-  const dbName = 'myMainDbConnection'
-  await initializeMongoDB({ uri, dbName })
+  const connectionName = 'myMainDbConnection'
+  await initializeMongoDB({ uri, connectionName })
 
   // Now we could easily access that connection from a different module synchronously.
-  const myMainDb = getDb({ dbName })
+  const myMainDb = getDb({ connectionName })
 
   // This will return the native MongoDB `Collection` object.
   const userCollection = myMainDb.collection('Users')
@@ -89,20 +89,20 @@ run()
 const dbConnections = [
   {
     uri: 'mongodb://localhost/myOlapDB',
-    dbName: 'OLAP_DB',
+    connectionName: 'OLAP_DB',
   },
   {
     uri: 'mongodb://localhost/myOltpDB',
-    dbName: 'OLTP_DB',
+    connectionName: 'OLTP_DB',
   },
 ]
 await Promise.all(dbConnections.map(initializeMongoDB))
 
 // Now in your modules get a db by its name
-const myOlapDb = getDb({ dbName: 'OLAP_DB' })
+const myOlapDb = getDb({ connectionName: 'OLAP_DB' })
 
 // Will throw if you tried to get a db that you did not initialize
-const myNonExistingDb = getDb({ dbName: 'SANTA' }) // throws: Database SANTA not yet initialized!
+const myNonExistingDb = getDb({ connectionName: 'SANTA' }) // throws: Database SANTA not yet initialized!
 ```
 
 Full API documentation [here](https://github.com/ehab180hb/pretty-mongo/blob/master/API.md)

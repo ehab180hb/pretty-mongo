@@ -1,46 +1,46 @@
-### `initializeMongoDB({ uri, dbName, options })`
+### `initializeMongoDB({ uri, connectionName, options })`
 
 Will initialize the DB connection and allow you to use the rest of the functions.
 
 - `uri` - The MongoDB connection string
-- `dbName` - An arbitrary name to assign to the specific instance of MongoDB, that will allow you later on to get that very same instance by the name. This feature allows you to easily create multiple database connections.
+- `connectionName` - An arbitrary name to assign to the specific instance of MongoDB, that will allow you later on to get that very same instance by the name. This feature allows you to easily create multiple database connections.
 - `options` - Optional. The native MongoDbClientOptions. (see the types)
 
 ```typescript
-await initializeMongoDB({ uri: 'mongodb://localhost/my-db', dbName: 'myDB' })
+await initializeMongoDB({ uri: 'mongodb://localhost/my-db', connectionName: 'myDB' })
 
 // or set your options
-await initializeMongoDB({ uri: 'mongodb://localhost/my-db', dbName: 'myDB', options: { useUnifiedTopology: false } })
+await initializeMongoDB({ uri: 'mongodb://localhost/my-db', connectionName: 'myDB', options: { useUnifiedTopology: false } })
 
 // getting it later on (it's a synchronous operation)
-const myDb = getDb({ dbName: 'myDb' })
+const myDb = getDb({ connectionName: 'myDb' })
 ```
 
-### `getDb({ dbName })`
+### `getDb({ connectionName })`
 
-Will return the native MongoDB `Db` object. Throws if no database by the name of `dbName` was initialized.
+Will return the native MongoDB `Db` object. Throws if no database by the name of `connectionName` was initialized.
 
-- `dbName` - The arbitrary name you've assigned to the database instance while initializing it.
+- `connectionName` - The arbitrary name you've assigned to the database instance while initializing it.
 
 ```typescript
-const myDb = getDb({ dbName: 'myDb' })
+const myDb = getDb({ connectionName: 'myDb' })
 ```
 
-### `getClient({ dbName })`
+### `getClient({ connectionName })`
 
-Will return the native MongoDB `MongoClient` object. Throws if no database by the name of `dbName` was initialized.
+Will return the native MongoDB `MongoClient` object. Throws if no database by the name of `connectionName` was initialized.
 
-- `dbName` - The arbitrary name you've assigned to the database instance while initializing it.
+- `connectionName` - The arbitrary name you've assigned to the database instance while initializing it.
 
 ```typescript
-const myDbClient = getClient({ dbName: 'myDb' })
+const myDbClient = getClient({ connectionName: 'myDb' })
 ```
 
 ### `MongoCollectionMethods(collection)`
 
 A class that gives you a set of useful methods to abstract away some of the complexity of working with MongoDB.
 
-- `collection` - The MongoDB `Collection` object. The one you get by calling `getClient({ dbName }).collection('MyCollectionName')`
+- `collection` - The MongoDB `Collection` object. The one you get by calling `getClient({ connectionName }).collection('MyCollectionName')`
 
 ```typescript
 interface UserDbModel {
@@ -52,8 +52,8 @@ interface UserDbModel {
   isAdmin?: boolean
 }
 
-const dbName = 'myApp'
-const collection = getClient({ dbName }).collection('Users')
+const connectionName = 'myApp'
+const collection = getClient({ connectionName }).collection('Users')
 
 const usersCollectionMethods = new MongoCollectionMethods<UserDbModel>(collection)
 

@@ -1,28 +1,28 @@
 import { Db, MongoClient, MongoClientOptions } from 'mongodb'
 import * as mongoUri from 'mongodb-uri'
 
-const databases: { [dbName: string]: { db: Db; client: MongoClient } } = {}
+const databases: { [connectionName: string]: { db: Db; client: MongoClient } } = {}
 
-export const getDb = ({ dbName }: { dbName: string }): Db => {
-  if (!databases[dbName]) throw new Error(`Database ${dbName} not yet initialized!`)
-  return databases[dbName].db
+export const getDb = ({ connectionName }: { connectionName: string }): Db => {
+  if (!databases[connectionName]) throw new Error(`Database ${connectionName} not yet initialized!`)
+  return databases[connectionName].db
 }
 
-export const getClient = ({ dbName }: { dbName: string }): MongoClient => {
-  if (!databases[dbName]) throw new Error(`Database ${dbName} not yet initialized!`)
-  return databases[dbName].client
+export const getClient = ({ connectionName }: { connectionName: string }): MongoClient => {
+  if (!databases[connectionName]) throw new Error(`Database ${connectionName} not yet initialized!`)
+  return databases[connectionName].client
 }
 
 export const initializeMongoDB = async ({
   uri,
-  dbName,
+  connectionName,
   options = {},
 }: {
   uri: string
-  dbName: string
+  connectionName: string
   options?: MongoClientOptions
 }): Promise<void> => {
-  if (databases[dbName]) return
+  if (databases[connectionName]) return
   const { database } = mongoUri.parse(uri)
   const client = await MongoClient.connect(uri, {
     useNewUrlParser: true,
@@ -32,7 +32,7 @@ export const initializeMongoDB = async ({
     ...options,
   })
   const db = client.db(database)
-  databases[dbName] = { client, db }
+  databases[connectionName] = { client, db }
   const signals: NodeJS.Signals[] = [`SIGINT`, `SIGUSR1`, `SIGUSR2`, `SIGTERM`]
   signals.forEach(s => process.once(s, async () => await client.close()))
 }
