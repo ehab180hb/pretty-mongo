@@ -14,7 +14,7 @@ let myService: MongoCollectionMethods<any>
 
 beforeAll(async () => {
   await initializeTestDB(uri)
-  myService = new MongoCollectionMethods(getTestDb().collection(collectionName))
+  myService = new MongoCollectionMethods(getTestDb().collection(collectionName) as any)
 })
 
 beforeEach(async () => {

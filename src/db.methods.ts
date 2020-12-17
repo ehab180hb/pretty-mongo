@@ -38,7 +38,7 @@ export class MongoCollectionMethods<BackendModel extends { _id: ObjectId }> {
   async updateOne(
     criteria: Partial<BackendModel>,
     update: Partial<BackendModel>,
-    options?: FindOneAndUpdateOption,
+    options?: FindOneAndUpdateOption<BackendModel>,
   ): Promise<boolean> {
     // https://jira.mongodb.org/browse/SERVER-26961
     const toUpdate = { $set: {} as any, $unset: {} as any }
@@ -57,7 +57,7 @@ export class MongoCollectionMethods<BackendModel extends { _id: ObjectId }> {
   async updateFieldsWithSpecialOp(
     criteria: object,
     update: { [k in UpdateOperators]?: { [k: string]: any } },
-    options?: FindOneAndUpdateOption,
+    options?: FindOneAndUpdateOption<BackendModel>,
   ): Promise<number> {
     const res = await this.c.findOneAndUpdate(criteria, update, options)
     return res.lastErrorObject.updatedExisting
@@ -66,8 +66,8 @@ export class MongoCollectionMethods<BackendModel extends { _id: ObjectId }> {
   /**
    * Grabs one record from the DB by its ID
    */
-  async getOneById(id: ObjectId, options?: FindOneOptions): Promise<BackendModel | undefined> {
-    const o = await this.c.findOne({ _id: id }, options)
+  async getOneById(id: ObjectId, options?: FindOneOptions<BackendModel>): Promise<BackendModel | undefined> {
+    const o = await this.c.findOne({ _id: id }, options as FindOneOptions<any>)
     if (!o) return // we want undefined instead of null
     return o
   }
@@ -75,8 +75,11 @@ export class MongoCollectionMethods<BackendModel extends { _id: ObjectId }> {
   /**
    * Grabs one record from the DB by an arbitrary field
    */
-  async getOne(criteria: Partial<BackendModel>, options?: FindOneOptions): Promise<BackendModel | undefined> {
-    const o = await this.c.findOne(criteria, options)
+  async getOne(
+    criteria: Partial<BackendModel>,
+    options?: FindOneOptions<BackendModel>,
+  ): Promise<BackendModel | undefined> {
+    const o = await this.c.findOne(criteria, options as FindOneOptions<any>)
     if (!o) return // we want undefined instead of null
     return o
   }
@@ -84,15 +87,15 @@ export class MongoCollectionMethods<BackendModel extends { _id: ObjectId }> {
   /**
    * Grabs records by a field.
    */
-  async getMany(criteria: Partial<BackendModel>, options?: FindOneOptions): Promise<BackendModel[]> {
-    return this.c.find(criteria, options).toArray()
+  async getMany(criteria: Partial<BackendModel>, options?: FindOneOptions<BackendModel>): Promise<BackendModel[]> {
+    return this.c.find(criteria, options as FindOneOptions<any>).toArray()
   }
 
   /**
    * Returns the total amount of items.
    */
-  async getTotalCount(criteria: Partial<BackendModel> = {}, options?: FindOneOptions): Promise<number> {
-    return this.c.find(criteria, options).count()
+  async getTotalCount(criteria: Partial<BackendModel> = {}, options?: FindOneOptions<BackendModel>): Promise<number> {
+    return this.c.find(criteria, options as FindOneOptions<any>).count()
   }
 
   /**
